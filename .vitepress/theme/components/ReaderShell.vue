@@ -87,33 +87,46 @@ const toggleSettings = () => {
 <template>
   <div :class="shellClass">
     <header class="reader-shell__header">
-      <div class="reader-shell__titles">
-        <a href="/" class="reader-shell__back">← Home</a>
-        <p class="reader-shell__novel">{{ novelTitle }}</p>
-        <h1 class="reader-shell__chapter">{{ chapterTitle }}</h1>
-      </div>
-      <div class="reader-shell__actions">
-        <button type="button" class="reader-shell__action" @click="toggleSettings">
-          {{ t('reader.settings') }}
-        </button>
-        <SearchDialog />
+      <div class="reader-shell__header-inner">
+        <div class="reader-shell__breadcrumbs">
+          <a href="/">Home</a>
+          <span>/</span>
+          <a href="/novel/">{{ t('reader.library') }}</a>
+          <span>/</span>
+          <span>{{ novelTitle }}</span>
+        </div>
+        <div class="reader-shell__meta">
+          <h1 class="reader-shell__chapter">{{ chapterTitle }}</h1>
+          <p class="reader-shell__novel">{{ novelTitle }}</p>
+        </div>
+        <div class="reader-shell__actions">
+          <button type="button" class="reader-shell__action" @click="toggleSettings">
+            {{ t('reader.settings') }}
+          </button>
+          <SearchDialog />
+        </div>
       </div>
     </header>
 
-    <div class="reader-shell__layout">
-      <aside v-if="isDesktop" class="reader-shell__sidebar">
-        <ReaderSettings />
-        <TableOfContents />
+    <div class="reader-shell__body">
+      <aside v-if="isDesktop" class="reader-shell__sidebar" aria-label="Display settings">
+        <div class="reader-shell__sidebar-card">
+          <ReaderSettings />
+        </div>
+        <div class="reader-shell__sidebar-card">
+          <TableOfContents />
+        </div>
       </aside>
 
-      <main class="reader-shell__content">
-        <slot />
+      <main class="reader-shell__main" aria-label="Chapter content">
+        <article class="reader-shell__article">
+          <slot />
+        </article>
+        <section class="reader-shell__chapter-nav" aria-label="Chapter navigation">
+          <ChapterNav />
+        </section>
       </main>
     </div>
-
-    <footer class="reader-shell__footer">
-      <ChapterNav />
-    </footer>
 
     <transition name="reader-shell__drawer">
       <div v-if="settingsOpen && !isDesktop" class="reader-shell__drawer">

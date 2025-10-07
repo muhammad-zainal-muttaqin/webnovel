@@ -34,6 +34,7 @@ export const translations = {
       noResults: 'No matching chapters. Try a different keyword.',
       readingMode: 'Reading Mode',
       chapterNavigation: 'Chapter Navigation',
+      library: 'Novels',
     },
   },
   id: {
@@ -68,6 +69,7 @@ export const translations = {
       noResults: 'Tidak ada chapter yang cocok. Coba kata kunci lain.',
       readingMode: 'Mode Baca',
       chapterNavigation: 'Navigasi Chapter',
+      library: 'Novel',
     },
   },
 };

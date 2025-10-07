@@ -1,9 +1,13 @@
 [
   {
     "route": "/novels\\unnamed-memory-after-the-end\\chapter-001",
-    "title": "本編",
-    "summary": "三百年もの永きにわたって、大陸で続いていた魔女の時代。強すぎる力を持つ五人の女を忌み、その恐怖を忘れることのないよう人々が囁ささやき始めた時代は、一人の魔女の結婚によって終わろうとしている。",
-    "keywords": ["Unnamed Memory", "アフターストーリー", "ファンタジー"],
+    "title": "Chapter 1 - A Quiet Ceremony",
+    "summary": "In a hall filled with dignitaries and hushed whispers, the legendary witch Tiinarsha prepares for a wedding that will finally close the long era of the Five Witches.",
+    "keywords": [
+      "Unnamed Memory",
+      "Ceremony",
+      "Fantasy"
+    ],
     "novel": {
       "slug": "unnamed-memory-after-the-end",
       "title": "Unnamed Memory -after the end- I"
@@ -11,9 +15,12 @@
   },
   {
     "route": "/novels\\unnamed-memory-after-the-end\\chapter-002",
-    "title": "あとがき",
-    "summary": "お世話になっております、古ふる宮みや九く時じです。この度は『Unnamed Memory -after the end- Ⅰ』をお手に取ってくださり、ありがとうございます！ この作品は同電撃の新文芸レーベルより刊行の『Unnamed Memory』の続編にあたります。",
-    "keywords": ["Unnamed Memory", "作者ノート"],
+    "title": "Afterword",
+    "summary": "The author thanks readers and explains how the continuation novella bridges the events of the main Unnamed Memory series.",
+    "keywords": [
+      "Unnamed Memory",
+      "Afterword"
+    ],
     "novel": {
       "slug": "unnamed-memory-after-the-end",
       "title": "Unnamed Memory -after the end- I"
@@ -21,9 +28,13 @@
   },
   {
     "route": "/novels\\unnamed-memory-after-the-end\\chapter-003",
-    "title": "章外：蛇の残像",
-    "summary": "濡れた黒髪はいつもより艶めいて見える。持ち主の腰まで届く髪はその時、寝台から床へと無造作に垂らされていた。",
-    "keywords": ["Unnamed Memory", "番外編"],
+    "title": "Extra - Serpent's Afterimage",
+    "summary": "Late at night, Tiinarsha senses an echo of the ancient serpent she once defeated and investigates whether a remnant still lingers.",
+    "keywords": [
+      "Unnamed Memory",
+      "Bonus",
+      "Serpent"
+    ],
     "novel": {
       "slug": "unnamed-memory-after-the-end",
       "title": "Unnamed Memory -after the end- I"

@@ -2,26 +2,26 @@
   {
     "slug": "unnamed-memory-after-the-end",
     "title": "Unnamed Memory -after the end- I",
-    "author": "????",
-    "language": "ja",
+    "author": "Kuji Furumiya",
+    "language": "en",
     "status": "completed",
-    "description": "?????????????????????????Unnamed Memory????????",
+    "description": "A collection of short episodes that follow Tiinarsha and King Oscar after the conclusion of Unnamed Memory.",
     "releaseDate": "2022-01-02",
-    "tags": ["??????", "????", "???"],
+    "tags": ["Fantasy", "Romance", "Afterstory"],
     "chapters": [
       {
         "file": "chapter-001.md",
-        "title": "??",
+        "title": "Chapter 1 - A Quiet Ceremony",
         "number": 1
       },
       {
         "file": "chapter-002.md",
-        "title": "????",
+        "title": "Afterword",
         "number": 2
       },
       {
         "file": "chapter-003.md",
-        "title": "??:????",
+        "title": "Extra - Serpent's Afterimage",
         "number": 3
       }
     ]
