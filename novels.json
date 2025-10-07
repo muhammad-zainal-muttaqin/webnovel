@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "unnamed-memory-after-the-end",
+    "title": "Unnamed Memory -after the end- I",
+    "author": "古宮九時",
+    "language": "ja",
+    "status": "completed",
+    "description": "女王となったティナーシャとオスカーの結婚後を描く、Unnamed Memoryの後日談短編集。",
+    "releaseDate": "2022-01-02",
+    "tags": ["ファンタジー", "ロマンス", "後日談"],
+    "chapters": [
+      {
+        "file": "chapter-001.md",
+        "title": "本編",
+        "number": 1
+      },
+      {
+        "file": "chapter-002.md",
+        "title": "あとがき",
+        "number": 2
+      },
+      {
+        "file": "chapter-003.md",
+        "title": "章外：蛇の残像",
+        "number": 3
+      }
+    ]
+  }
+]

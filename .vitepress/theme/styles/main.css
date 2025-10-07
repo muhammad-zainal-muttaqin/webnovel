@@ -1,0 +1,526 @@
+:root {
+  font-family:
+    'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', 'MS PMincho', serif;
+  color: #1f2933;
+  background-color: #f7f7f5;
+}
+
+html[data-reader-theme='dark'] {
+  color: #f8fafc;
+  background-color: #121417;
+}
+
+.reader-shell {
+  --reader-background: #ffffff;
+  --reader-surface: rgba(15, 23, 42, 0.04);
+  --reader-border: rgba(15, 23, 42, 0.08);
+  --reader-foreground: #1b1f24;
+  --reader-accent: #2563eb;
+  --reader-heading: #16191d;
+  --reader-muted: #4b5563;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--reader-background);
+  color: var(--reader-foreground);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.reader-shell--theme-dark {
+  --reader-background: #101215;
+  --reader-surface: rgba(148, 163, 184, 0.08);
+  --reader-border: rgba(148, 163, 184, 0.18);
+  --reader-foreground: #e2e8f0;
+  --reader-heading: #f8fafc;
+  --reader-accent: #60a5fa;
+  --reader-muted: #94a3b8;
+}
+
+.reader-shell--font-serif {
+  font-family:
+    'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', 'Hiragino Mincho Pro', 'MS PMincho', serif;
+}
+
+.reader-shell--font-sans {
+  font-family: 'Noto Sans JP', 'Yu Gothic', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+}
+
+.reader-shell--font-scale-n2 {
+  --reader-font-size: 0.85rem;
+}
+
+.reader-shell--font-scale-n1 {
+  --reader-font-size: 0.92rem;
+}
+
+.reader-shell--font-scale-p0 {
+  --reader-font-size: 1rem;
+}
+
+.reader-shell--font-scale-p1 {
+  --reader-font-size: 1.08rem;
+}
+
+.reader-shell--font-scale-p2 {
+  --reader-font-size: 1.16rem;
+}
+
+.reader-shell--font-scale-p3 {
+  --reader-font-size: 1.24rem;
+}
+
+.reader-shell--font-scale-p4 {
+  --reader-font-size: 1.32rem;
+}
+
+.reader-shell--font-scale-p5 {
+  --reader-font-size: 1.4rem;
+}
+
+.reader-shell--line-compact {
+  --reader-line-height: 1.5;
+}
+
+.reader-shell--line-normal {
+  --reader-line-height: 1.75;
+}
+
+.reader-shell--line-relaxed {
+  --reader-line-height: 1.95;
+}
+
+.reader-shell--width-narrow {
+  --reader-content-max: 640px;
+}
+
+.reader-shell--width-medium {
+  --reader-content-max: 720px;
+}
+
+.reader-shell--width-wide {
+  --reader-content-max: 860px;
+}
+
+.reader-shell__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem 2rem 1rem;
+  border-bottom: 1px solid var(--reader-border);
+  background: var(--reader-surface);
+  backdrop-filter: blur(8px);
+}
+
+.reader-shell__titles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.reader-shell__novel {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--reader-muted);
+  letter-spacing: 0.04em;
+}
+
+.reader-shell__chapter {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--reader-heading);
+  font-weight: 600;
+}
+
+.reader-shell__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.reader-shell__action {
+  border: 1px solid var(--reader-border);
+  background: transparent;
+  color: inherit;
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.reader-shell__action:hover {
+  border-color: var(--reader-accent);
+  color: var(--reader-accent);
+}
+
+.reader-shell__layout {
+  display: flex;
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.reader-shell__sidebar {
+  width: 320px;
+  padding: 1.5rem 1.25rem;
+  border-right: 1px solid var(--reader-border);
+  background: var(--reader-surface);
+  overflow-y: auto;
+}
+
+.reader-shell__content {
+  flex: 1 1 auto;
+  width: 100%;
+  max-width: var(--reader-content-max, 720px);
+  margin: 0 auto;
+  padding: 2rem 1.75rem 4rem;
+  font-size: var(--reader-font-size, 1rem);
+  line-height: var(--reader-line-height, 1.75);
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.reader-shell__content p {
+  margin: 0 0 1.25em;
+}
+
+.reader-shell__content h1,
+.reader-shell__content h2,
+.reader-shell__content h3 {
+  color: var(--reader-heading);
+}
+
+.reader-shell__footer {
+  border-top: 1px solid var(--reader-border);
+  padding: 1rem 2rem;
+  background: var(--reader-surface);
+}
+
+.reader-shell__drawer {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 40;
+}
+
+.reader-shell__drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+}
+
+.reader-shell__drawer-panel {
+  position: relative;
+  width: min(90vw, 420px);
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  background: var(--reader-background);
+  color: inherit;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
+  border: 1px solid var(--reader-border);
+}
+
+.reader-shell__drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.reader-shell__drawer-enter-active,
+.reader-shell__drawer-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.reader-shell__drawer-enter-from,
+.reader-shell__drawer-leave-to {
+  opacity: 0;
+}
+
+.reader-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.reader-settings__title {
+  font-size: 1rem;
+  margin: 0 0 0.25rem 0;
+  color: var(--reader-heading);
+}
+
+.reader-settings__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.reader-settings__label {
+  font-size: 0.85rem;
+  color: var(--reader-muted);
+}
+
+.reader-settings__options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.reader-settings__toggle {
+  border: 1px solid var(--reader-border);
+  background: transparent;
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.reader-settings__toggle--active,
+.reader-settings__toggle:hover {
+  border-color: var(--reader-accent);
+  background: var(--reader-accent);
+  color: #ffffff;
+}
+
+.reader-settings__slider {
+  width: 100%;
+  accent-color: var(--reader-accent);
+}
+
+.reader-settings__select {
+  width: 100%;
+  border: 1px solid var(--reader-border);
+  background: var(--reader-background);
+  color: inherit;
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+}
+
+.reader-settings__hint {
+  font-size: 0.8rem;
+  color: var(--reader-muted);
+  margin: 0;
+}
+
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.chapter-nav__item {
+  flex: 1 1 0;
+}
+
+.chapter-nav__link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.85rem;
+  border: 1px solid var(--reader-border);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border 0.2s ease,
+    background 0.2s ease;
+}
+
+.chapter-nav__link:hover {
+  border-color: var(--reader-accent);
+}
+
+.chapter-nav__link--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chapter-nav__link--primary {
+  border-color: var(--reader-accent);
+}
+
+.chapter-nav__hint {
+  font-size: 0.75rem;
+  color: var(--reader-muted);
+  letter-spacing: 0.08em;
+}
+
+.toc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.toc__title {
+  font-size: 0.95rem;
+  margin: 0;
+  color: var(--reader-heading);
+}
+
+.toc__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.toc__link {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+  transition:
+    background 0.2s ease,
+    border 0.2s ease;
+}
+
+.toc__link:hover {
+  border-color: var(--reader-border);
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.toc__link--current {
+  border-color: var(--reader-accent);
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--reader-accent);
+}
+
+.toc__number {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--reader-muted);
+}
+
+.search-dialog {
+  position: relative;
+}
+
+.search-dialog__trigger {
+  border: 1px solid var(--reader-border);
+  background: transparent;
+  color: inherit;
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.search-dialog__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.search-dialog__panel {
+  width: min(90vw, 560px);
+  background: var(--reader-background);
+  border-radius: 1rem;
+  border: 1px solid var(--reader-border);
+  padding: 1.25rem;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.2);
+  color: inherit;
+}
+
+.search-dialog__header {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.search-dialog__input {
+  flex: 1;
+  border: 1px solid var(--reader-border);
+  background: var(--reader-surface);
+  color: inherit;
+  padding: 0.65rem 0.75rem;
+  border-radius: 0.75rem;
+}
+
+.search-dialog__close {
+  border: none;
+  background: transparent;
+  color: var(--reader-muted);
+  cursor: pointer;
+}
+
+.search-dialog__hint {
+  margin: 1rem 0 0;
+  font-size: 0.85rem;
+  color: var(--reader-muted);
+}
+
+.skeleton-block {
+  height: 1em;
+  border-radius: 0.5rem;
+  background: linear-gradient(
+    90deg,
+    rgba(148, 163, 184, 0.15),
+    rgba(148, 163, 184, 0.05),
+    rgba(148, 163, 184, 0.15)
+  );
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.reader-note {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--reader-accent);
+  background: rgba(37, 99, 235, 0.08);
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 959px) {
+  .reader-shell__header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .reader-shell__layout {
+    flex-direction: column;
+  }
+
+  .reader-shell__sidebar {
+    display: none;
+  }
+
+  .reader-shell__content {
+    padding: 1.5rem 1.25rem 3.5rem;
+  }
+
+  .chapter-nav {
+    flex-direction: column;
+  }
+}

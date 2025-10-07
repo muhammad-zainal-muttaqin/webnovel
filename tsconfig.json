@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2020", "DOM"],
+    "jsx": "preserve",
+    "strict": true,
+    "allowJs": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "types": ["node"],
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "@theme/*": [".vitepress/theme/*"],
+      "@docs/*": ["docs/*"],
+      "@scripts/*": ["scripts/*"]
+    }
+  },
+  "include": [
+    ".vitepress/**/*.ts",
+    ".vitepress/**/*.d.ts",
+    ".vitepress/**/*.vue",
+    "scripts/**/*.ts",
+    "docs/**/*.ts",
+    "content/**/*.md",
+    "docs/**/*.md",
+    "vite.config.ts",
+    "vitepress.config.ts"
+  ],
+  "exclude": ["node_modules", "dist"]
+}

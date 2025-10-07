@@ -1,0 +1,496 @@
+{
+  "projectName": "Web Novel Platform",
+  "description": "Roadmap Implementasi Berbasis User Experience",
+  "timeline": "Roadmap bertahap dengan evaluasi setiap 6-8 minggu",
+  "philosophy": "Buat user merasa di rumah sendiri saat membaca. Semua fitur ada untuk mendukung, bukan mengganggu pengalaman membaca.",
+  "phases": [
+    {
+      "phase": 1,
+      "name": "Stage 1 - Static Reader MVP (VitePress)",
+      "duration": "Minggu 1-6",
+      "priority": "Critical untuk MVP",
+      "goals": [
+        "Rilis pengalaman membaca dasar tanpa backend tambahan",
+        "Pastikan SEO chapter statis siap produksi",
+        "Bangun fondasi komponen reusable untuk tahap selanjutnya"
+      ],
+      "categories": [
+        {
+          "category": "Konten & Struktur",
+          "features": [
+            {
+              "id": 101,
+              "name": "Struktur Markdown Chapter",
+              "priority": 5,
+              "details": [
+                "Gunakan folder `content/novels/<slug>/<chapter>.md` dengan penamaan konsisten",
+                "Frontmatter wajib memuat id, judul, nomor bab, prev/next, ringkasan, keywords",
+                "Tambahkan skrip validasi build untuk mendeteksi relasi bab yang hilang"
+              ]
+            },
+            {
+              "id": 102,
+              "name": "Registri Metadata Novel",
+              "priority": 5,
+              "details": [
+                "Simpan metadata global novel pada `novels.json` (judul, author, cover, status, tags)",
+                "Sinkronkan metadata dengan komponen katalog dan halaman detail",
+                "Sediakan placeholder untuk field tambahan (rating, jadwal rilis) di tahap berikutnya"
+              ]
+            },
+            {
+              "id": 103,
+              "name": "Indeks Pencarian Statis",
+              "priority": 4,
+              "details": [
+                "Bangun indeks pencarian saat build (mis. FlexSearch/Minisearch)",
+                "Expose data ke klien melalui `public/index.json`",
+                "Sertakan minimal judul novel, ringkasan pendek, kata kunci"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "Pengalaman Membaca",
+          "features": [
+            {
+              "id": 111,
+              "name": "Reader Shell & Layout",
+              "priority": 5,
+              "details": [
+                "Implementasikan `ReaderShell.vue` sebagai layout utama",
+                "Render judul, progress bar, TOC, dan kontrol navigasi bab",
+                "Terapkan desain responsif untuk mobile dan desktop"
+              ]
+            },
+            {
+              "id": 112,
+              "name": "Pengaturan Kenyamanan Baca",
+              "priority": 5,
+              "details": [
+                "Sediakan toggle light/dark, pilihan font, ukuran teks, line spacing, lebar konten",
+                "Simpan preferensi di `localStorage` dengan fallback default",
+                "Gunakan animasi ringan agar perpindahan terasa halus"
+              ]
+            },
+            {
+              "id": 113,
+              "name": "Perf & Offline Baseline",
+              "priority": 4,
+              "details": [
+                "Tambah skeleton loader dan prefetch bab berikutnya",
+                "Optimalkan gambar/asset statis dan gunakan lazy loading",
+                "Opsional: service worker sederhana untuk cache bab terakhir"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "Automasi & Deploy",
+          "features": [
+            {
+              "id": 121,
+              "name": "Pipeline CI/CD",
+              "priority": 5,
+              "details": [
+                "Konfigurasikan GitHub Actions untuk lint, build VitePress, dan deploy",
+                "Trigger otomatis setiap ada perubahan file konten atau tema",
+                "Simpan artefak build untuk debugging jika terjadi kegagalan"
+              ]
+            },
+            {
+              "id": 122,
+              "name": "Hosting & Konfigurasi",
+              "priority": 4,
+              "details": [
+                "Deploy ke Cloudflare Pages/Vercel/GitHub Pages sesuai kebutuhan",
+                "Atur redirect dan headers penting (cache, CSP dasar)",
+                "Pantau error melalui log hosting"
+              ]
+            },
+            {
+              "id": 123,
+              "name": "Quality Gate Dasar",
+              "priority": 3,
+              "details": [
+                "Tambahkan pemeriksaan broken link dan validasi frontmatter dalam workflow",
+                "Gunakan Lighthouse CI manual untuk memantau performa awal",
+                "Catat hasil audit sebagai baseline sebelum masuk Tahap 2"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "name": "Stage 2 - Sinkronisasi & API",
+      "duration": "Minggu 7-14",
+      "priority": "High - membuka fitur akun dan personalisasi",
+      "goals": [
+        "Integrasikan API auth dan progress tanpa meninggalkan VitePress",
+        "Aktifkan bookshelf dan riwayat baca lintas perangkat",
+        "Mulai siapkan pemisahan komponen UI ke paket reusable"
+      ],
+      "categories": [
+        {
+          "category": "Akun & Session",
+          "features": [
+            {
+              "id": 201,
+              "name": "Authentication & Guest Flow",
+              "priority": 5,
+              "details": [
+                "Implementasikan login/register (email, OAuth opsional) via API eksternal",
+                "Pertahankan guest mode dengan migrasi preferensi saat user login",
+                "Sediakan UI error handling dan loading state yang konsisten"
+              ]
+            },
+            {
+              "id": 202,
+              "name": "Session & Token Handling",
+              "priority": 5,
+              "details": [
+                "Simpan token secara aman (httpOnly cookie bila memungkinkan)",
+                "Perbarui token otomatis dan handle sesi habis",
+                "Tambahkan middle layer service (`AuthService`) di theme"
+              ]
+            },
+            {
+              "id": 203,
+              "name": "Progress Sync API",
+              "priority": 5,
+              "details": [
+                "Hitung dan kirim posisi baca secara periodik ke API",
+                "Render indikator progress lintas perangkat",
+                "Fallback ke localStorage saat offline lalu sync saat online"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "Library & Discovery",
+          "features": [
+            {
+              "id": 211,
+              "name": "Bookshelf & History",
+              "priority": 4,
+              "details": [
+                "Tambahkan daftar `Continue Reading`, bookmark, dan status baca",
+                "Gunakan store global (Pinia atau setara) untuk state caching",
+                "Sediakan aksi cepat (hapus, tandai selesai, ubah status)"
+              ]
+            },
+            {
+              "id": 212,
+              "name": "Reading Stats Lite",
+              "priority": 3,
+              "details": [
+                "Tampilkan ringkasan waktu baca dan jumlah bab per minggu",
+                "Tarik data dari API analytics sederhana",
+                "Render skeleton sementara data di-fetch"
+              ]
+            },
+            {
+              "id": 213,
+              "name": "Search API Hybrid",
+              "priority": 3,
+              "details": [
+                "Perluas pencarian dengan endpoint server (filter genre, status)",
+                "Gabungkan dengan indeks statis agar tetap cepat",
+                "Logging query populer untuk insight stage berikutnya"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "Author & Konten",
+          "features": [
+            {
+              "id": 221,
+              "name": "Author Dashboard Lite",
+              "priority": 4,
+              "details": [
+                "Sediakan halaman khusus author dengan autentikasi terpisah",
+                "List draft/published yang diambil dari API",
+                "Mulai ekstraksi komponen UI ke paket reusable"
+              ]
+            },
+            {
+              "id": 222,
+              "name": "Submission Workflow",
+              "priority": 3,
+              "details": [
+                "Form upload markdown/MDX ke API untuk diproses",
+                "Preview konten menggunakan komponen reader yang sama",
+                "Catat status pengiriman (pending, approved, rejected)"
+              ]
+            },
+            {
+              "id": 223,
+              "name": "Validasi & Webhook Konten",
+              "priority": 2,
+              "details": [
+                "Tambahkan webhook build untuk regenerasi bila konten baru diterima",
+                "Pastikan integrasi tidak mengganggu Tahap 1 (opsional, bisa di backlog)",
+                "Dokumentasikan alur otorisasi antara CMS/API dan VitePress"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 3,
+      "name": "Stage 3 - SSR Migration & Advanced Platform",
+      "duration": "Minggu 15+ (iteratif)",
+      "priority": "Strategic - skala dan fitur lanjutan",
+      "goals": [
+        "Migrasikan route kritis ke framework SSR (Nuxt/Next) tanpa downtime",
+        "Aktifkan fitur komunitas, monetisasi, dan SEO personal",
+        "Siapkan pondasi AI, rekomendasi, dan integrasi ekosistem"
+      ],
+      "categories": [
+        {
+          "category": "Fondasi SSR",
+          "features": [
+            {
+              "id": 301,
+              "name": "Evaluasi & Setup Framework",
+              "priority": 5,
+              "details": [
+                "Pilih Nuxt/Next sesuai kesiapan tim",
+                "Konfigurasikan SSR/ISR dan adapter deploy (Vercel, Node, Edge)",
+                "Siapkan arsitektur modul agar microservice mudah diintegrasi"
+              ]
+            },
+            {
+              "id": 302,
+              "name": "Ekstraksi Library Komponen",
+              "priority": 4,
+              "details": [
+                "Port komponen reader dari VitePress ke paket UI mandiri",
+                "Jaga konsistensi styling (design tokens, tailwind/uno dsb.)",
+                "Lengkapi dokumentasi penggunaan di kedua lingkungan"
+              ]
+            },
+            {
+              "id": 303,
+              "name": "Migrasi Route Bertahap",
+              "priority": 4,
+              "details": [
+                "Mulai dari halaman reader & dashboard yang paling butuh SSR",
+                "Gunakan reverse proxy/subdomain agar transisi mulus",
+                "Monitor metrik SEO dan performa sebelum/selesai migrasi"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "Pengalaman Lanjutan",
+          "features": [
+            {
+              "id": 311,
+              "name": "SEO-first Chapter Rendering",
+              "priority": 5,
+              "details": [
+                "Render konten bab beserta metadata terstruktur di server",
+                "Implementasikan canonical link dan schema.org `Article`",
+                "Gunakan edge caching untuk response populer"
+              ]
+            },
+            {
+              "id": 312,
+              "name": "Komunitas & Interaksi",
+              "priority": 3,
+              "details": [
+                "Bangun komentar, rating, badge dengan kontrol penuh",
+                "Integrasikan moderation queue di backend",
+                "Sediakan API publik terbatas untuk integrasi komunitas"
+              ]
+            },
+            {
+              "id": 313,
+              "name": "Observability & Performance",
+              "priority": 3,
+              "details": [
+                "Tambahkan tracing (OpenTelemetry) dan error tracking",
+                "Gunakan CDN edge function untuk personalisasi ringan",
+                "Set baseline SLO untuk waktu respon dan uptime"
+              ]
+            }
+          ]
+        },
+        {
+          "category": "Ekspansi & Monetisasi",
+          "features": [
+            {
+              "id": 321,
+              "name": "Monetisasi Bertahap",
+              "priority": 2,
+              "details": [
+                "Rancang sistem coin/premium chapter dengan audit trail",
+                "Siapkan integrasi payment gateway lokal",
+                "Pastikan alur pembayaran tidak mengganggu user gratis"
+              ]
+            },
+            {
+              "id": 322,
+              "name": "AI & Rekomendasi",
+              "priority": 2,
+              "details": [
+                "Mulai dengan rekomendasi rule-based lalu kembangkan ke ML",
+                "Tambahkan fitur TTS/summarization jika nilai tambah jelas",
+                "Jaga privasi data pembaca saat memanfaatkan AI"
+              ]
+            },
+            {
+              "id": 323,
+              "name": "Integrasi Ekosistem",
+              "priority": 1,
+              "details": [
+                "Buka API publik, webhook, atau bot komunitas secara bertahap",
+                "Siapkan dokumentasi developer",
+                "Evaluasi kesiapan internal sebelum membuka akses luas"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "designPrinciples": {
+    "do": [
+      {
+        "principle": "Smooth & Fast",
+        "description": "Tidak ada lag, loading cepat"
+      },
+      {
+        "principle": "Beautiful & Clean",
+        "description": "Estetik tanpa berantakan"
+      },
+      {
+        "principle": "User Control",
+        "description": "Banyak customization tanpa overwhelming"
+      },
+      {
+        "principle": "Non-intrusive",
+        "description": "Notifikasi minimal, no aggressive popup"
+      },
+      {
+        "principle": "Mobile-first",
+        "description": "Mayoritas user baca di HP"
+      },
+      {
+        "principle": "Smart Auto-save",
+        "description": "User tidak perlu mikir save/load"
+      },
+      {
+        "principle": "Eye Comfort",
+        "description": "Dark mode, font options, spacing control"
+      }
+    ],
+    "dont": [
+      {
+        "principle": "Aggressive Ads",
+        "description": "Jangan ganggu reading experience"
+      },
+      {
+        "principle": "Forced Login",
+        "description": "Guest bisa baca, login untuk fitur extra"
+      },
+      {
+        "principle": "Complicated UI",
+        "description": "Keep it simple and intuitive"
+      },
+      {
+        "principle": "Heavy Gamification",
+        "description": "Jangan sampai terasa kayak game gacha"
+      },
+      {
+        "principle": "Paywall Aggressive",
+        "description": "Free user harus tetap bisa menikmati"
+      },
+      {
+        "principle": "Slow Loading",
+        "description": "Performance adalah prioritas"
+      },
+      {
+        "principle": "Too Many Popups",
+        "description": "Minimal interruption"
+      }
+    ]
+  },
+  "successMetrics": {
+    "userExperience": [
+      {
+        "metric": "Time to Interactive",
+        "target": "< 2 detik"
+      },
+      {
+        "metric": "Average reading session",
+        "target": "> 20 menit"
+      },
+      {
+        "metric": "Mobile bounce rate",
+        "target": "< 30%"
+      },
+      {
+        "metric": "User satisfaction score",
+        "target": "> 4.5/5"
+      },
+      {
+        "metric": "Return rate (7 hari)",
+        "target": "> 60%"
+      }
+    ],
+    "engagement": [
+      {
+        "metric": "Chapter completion rate",
+        "target": "> 70%"
+      },
+      {
+        "metric": "Comment engagement",
+        "target": "> 15%"
+      },
+      {
+        "metric": "Bookmark rate",
+        "target": "> 25%"
+      },
+      {
+        "metric": "Notification opt-in",
+        "target": "> 40%"
+      }
+    ],
+    "business": [
+      {
+        "metric": "Conversion to paid",
+        "target": "> 5%"
+      },
+      {
+        "metric": "Monthly active users growth",
+        "target": "Increasing trend"
+      },
+      {
+        "metric": "Average revenue per user",
+        "target": "Positive growth"
+      },
+      {
+        "metric": "Retention rate 30-day",
+        "target": "> 40%"
+      }
+    ]
+  },
+  "focusAreas": [
+    "Tahap 1: Pengalaman membaca statis yang memanjakan pengguna",
+    "Tahap 2: Sinkronisasi akun dan data lintas perangkat melalui API",
+    "Tahap 3: Migrasi SSR untuk SEO, performa, dan fitur lanjutan",
+    "Reuse komponen UI agar perpindahan antar tahap mulus",
+    "Inspeksi performa, SEO, dan feedback pengguna pada setiap evaluasi"
+  ],
+  "strategy": {
+    "approach": "Stage-by-stage delivery",
+    "description": "Eksekusi cepat Tahap 1 menggunakan VitePress statis, lanjutkan dengan integrasi API sinkronisasi, lalu migrasi ke SSR saat kebutuhan dinamis dan SEO lanjutan muncul."
+  },
+  "quote": "The best reading platform is the one where readers forget they're using a platform, and just enjoy the story."
+}
