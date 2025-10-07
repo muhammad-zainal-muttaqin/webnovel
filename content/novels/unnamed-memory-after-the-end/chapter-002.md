@@ -1,18 +1,18 @@
 ---
-id: umae-chapter-002
-novel: unnamed-memory-after-the-end
-chapter: 2
-title: あとがき
-prev: ./chapter-001.md
-next: ./chapter-003.md
-summary: >-
-  お世話になっております、古ふる宮みや九く時じです。この度は『Unnamed Memory -after the end- Ⅰ』をお手に取ってくださり、ありがとうございます！　この作品は同電撃の新文芸レーベルより刊行の『Unnamed
-  Memory』の続編にあたります。
-keywords:
-  - Unnamed Memory
-  - 作者ノート
-releaseDate: '2022-01-02'
-layout: reader
+title: あとがき  
+layout: doc
+prev:
+  text: '本編'
+  link: '/novel/unnamed-memory-after-the-end/chapter-001'
+next:
+  text: '章外：蛇の残像'
+  link: '/novel/unnamed-memory-after-the-end/chapter-003'
+---
+
+# Unnamed Memory -after the end- I
+
+**Chapter 2: あとがき**
+
 ---
 
 # あとがき

@@ -3,6 +3,7 @@ import { computed, onMounted, onBeforeUnmount, ref } from 'vue';
 import { useData } from 'vitepress';
 
 import { useReaderPreferences } from '../composables/useReaderPreferences';
+import { useI18n } from '../composables/useI18n';
 import novels from '../../../novels.json';
 
 import ReaderSettings from './ReaderSettings.vue';
@@ -23,13 +24,14 @@ type NovelMeta = {
 
 const { frontmatter } = useData();
 const { theme, fontScale, fontFamily, lineHeight, contentWidth } = useReaderPreferences();
+const { t } = useI18n();
 
 const resolvedNovel = computed<NovelMeta | undefined>(() =>
   (novels as NovelMeta[]).find((item) => item.slug === frontmatter.value.novel)
 );
 
 const chapterTitle = computed(() => frontmatter.value.title ?? '');
-const novelTitle = computed(() => resolvedNovel.value?.title ?? '読書モード');
+const novelTitle = computed(() => resolvedNovel.value?.title ?? t('reader.readingMode'));
 
 const settingsOpen = ref(false);
 const isDesktop = ref(false);
@@ -86,11 +88,12 @@ const toggleSettings = () => {
   <div :class="shellClass">
     <header class="reader-shell__header">
       <div class="reader-shell__titles">
+        <a href="/" class="reader-shell__back">← Home</a>
         <p class="reader-shell__novel">{{ novelTitle }}</p>
         <h1 class="reader-shell__chapter">{{ chapterTitle }}</h1>
       </div>
       <div class="reader-shell__actions">
-        <button type="button" class="reader-shell__action" @click="toggleSettings">設定</button>
+        <button type="button" class="reader-shell__action" @click="toggleSettings">{{ t('reader.settings') }}</button>
         <SearchDialog />
       </div>
     </header>
@@ -115,9 +118,9 @@ const toggleSettings = () => {
         <div class="reader-shell__drawer-backdrop" @click="toggleSettings" />
         <div class="reader-shell__drawer-panel">
           <div class="reader-shell__drawer-header">
-            <h2>表示設定</h2>
+            <h2>{{ t('reader.settings') }}</h2>
             <button type="button" class="reader-shell__action" @click="toggleSettings">
-              閉じる
+              {{ t('reader.close') }}
             </button>
           </div>
           <ReaderSettings />

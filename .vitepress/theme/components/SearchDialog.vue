@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, nextTick, onMounted, onBeforeUnmount, watch } from 'vue';
+import { useI18n } from '../composables/useI18n';
 
 type SearchEntry = {
   route: string;
@@ -11,6 +12,8 @@ type SearchEntry = {
     title: string;
   };
 };
+
+const { t } = useI18n();
 
 const open = ref(false);
 const query = ref('');
@@ -126,12 +129,12 @@ watch(open, (isOpen) => {
 <template>
   <div class="search-dialog">
     <button type="button" class="search-dialog__trigger" @click="toggle">
-      Search<span aria-hidden="true"> (/)</span>
+      {{ t('reader.search') }}<span aria-hidden="true"> (/)</span>
     </button>
 
     <transition name="search-dialog__overlay">
       <div v-if="open" class="search-dialog__overlay">
-        <div class="search-dialog__panel" role="dialog" aria-modal="true" aria-label="Search">
+        <div class="search-dialog__panel" role="dialog" aria-modal="true" :aria-label="t('reader.search')">
           <form
             class="search-dialog__header"
             @submit.prevent="filteredEntries[0] && visit(filteredEntries[0].route)"
@@ -140,19 +143,19 @@ watch(open, (isOpen) => {
               ref="inputRef"
               v-model="query"
               type="search"
-              placeholder="Search chapters by title, keyword, or summary"
+              :placeholder="t('reader.searchPlaceholder')"
               class="search-dialog__input"
               spellcheck="false"
               autocomplete="off"
             />
-            <button type="button" class="search-dialog__close" @click="close">Close</button>
+            <button type="button" class="search-dialog__close" @click="close">{{ t('reader.close') }}</button>
           </form>
 
           <div class="search-dialog__body">
-            <div v-if="loading" class="search-dialog__status">Loading index�</div>
+            <div v-if="loading" class="search-dialog__status">{{ t('reader.loading') }}</div>
             <div v-else-if="errorMessage" class="search-dialog__error">{{ errorMessage }}</div>
             <div v-else-if="filteredEntries.length === 0" class="search-dialog__status">
-              No matching chapters. Try a different keyword.
+              {{ t('reader.noResults') }}
             </div>
             <ul v-else class="search-dialog__results">
               <li v-for="entry in filteredEntries" :key="entry.route" class="search-dialog__result">

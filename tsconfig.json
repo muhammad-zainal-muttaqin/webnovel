@@ -1,4 +1,4 @@
-{
+﻿{
   "compilerOptions": {
     "target": "ES2020",
     "module": "NodeNext",
@@ -10,7 +10,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "types": ["node"],
+    "types": ["node", "vitepress/client"],
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "baseUrl": ".",

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useData, useRoute } from 'vitepress';
+import { useI18n } from '../composables/useI18n';
 import novels from '../../../novels.json';
 
 type NovelMeta = {
@@ -10,6 +11,7 @@ type NovelMeta = {
 
 const { frontmatter } = useData();
 const route = useRoute();
+const { t } = useI18n();
 
 const novel = computed<NovelMeta | undefined>(() =>
   (novels as NovelMeta[]).find((item) => item.slug === frontmatter.value.novel)
@@ -38,7 +40,7 @@ const entries = computed(() => {
 
 <template>
   <section class="toc">
-    <h2 class="toc__title">目次</h2>
+    <h2 class="toc__title">{{ t('reader.tableOfContents') }}</h2>
     <ol class="toc__list">
       <li v-for="entry in entries" :key="entry.file" class="toc__item">
         <a :href="entry.path" class="toc__link" :class="{ 'toc__link--current': entry.isCurrent }">

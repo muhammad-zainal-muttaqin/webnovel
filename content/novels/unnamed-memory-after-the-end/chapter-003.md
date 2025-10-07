@@ -1,16 +1,18 @@
 ---
-id: umae-chapter-003
-novel: unnamed-memory-after-the-end
-chapter: 3
 title: 章外：蛇の残像
-prev: ./chapter-002.md
-next: null
-summary: 濡れた黒髪はいつもより艶めいて見える。持ち主の腰まで届く髪はその時、寝台から床へと無造作に垂らされていた。
-keywords:
-  - Unnamed Memory
-  - 番外編
-releaseDate: '2022-01-02'
-layout: reader
+layout: doc
+prev:
+  text: 'あとがき'
+  link: '/novel/unnamed-memory-after-the-end/chapter-002'
+next:
+  text: 'Novel List'
+  link: '/novels'
+---
+
+# Unnamed Memory -after the end- I
+
+**Chapter 3: 章外：蛇の残像**
+
 ---
 
 # 章外：蛇の残像

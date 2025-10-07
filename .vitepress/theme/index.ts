@@ -1,5 +1,5 @@
 import DefaultTheme from 'vitepress/theme';
-import type { Theme } from 'vitepress';
+import type { Theme, EnhanceAppContext } from 'vitepress';
 import { h } from 'vue';
 import { useData } from 'vitepress';
 
@@ -13,6 +13,7 @@ import ReaderNote from './components/ReaderNote.vue';
 import ReaderLayout from './layouts/Reader.vue';
 
 import './styles/main.css';
+import './styles/custom.css';
 
 const WrappedLayout = {
   setup() {
@@ -29,7 +30,8 @@ const WrappedLayout = {
 const theme: Theme = {
   extends: DefaultTheme,
   Layout: WrappedLayout,
-  enhanceApp({ app }) {
+  enhanceApp(ctx: EnhanceAppContext) {
+    const { app } = ctx;
     app.component('ReaderShell', ReaderShell);
     app.component('ReaderSettings', ReaderSettings);
     app.component('ChapterNav', ChapterNav);
