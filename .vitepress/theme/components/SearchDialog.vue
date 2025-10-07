@@ -134,7 +134,12 @@ watch(open, (isOpen) => {
 
     <transition name="search-dialog__overlay">
       <div v-if="open" class="search-dialog__overlay">
-        <div class="search-dialog__panel" role="dialog" aria-modal="true" :aria-label="t('reader.search')">
+        <div
+          class="search-dialog__panel"
+          role="dialog"
+          aria-modal="true"
+          :aria-label="t('reader.search')"
+        >
           <form
             class="search-dialog__header"
             @submit.prevent="filteredEntries[0] && visit(filteredEntries[0].route)"
@@ -148,7 +153,9 @@ watch(open, (isOpen) => {
               spellcheck="false"
               autocomplete="off"
             />
-            <button type="button" class="search-dialog__close" @click="close">{{ t('reader.close') }}</button>
+            <button type="button" class="search-dialog__close" @click="close">
+              {{ t('reader.close') }}
+            </button>
           </form>
 
           <div class="search-dialog__body">

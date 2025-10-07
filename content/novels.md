@@ -20,4 +20,3 @@ layout: doc
 - [Chapter 1: 本編](/novel/unnamed-memory-after-the-end/chapter-001)
 - [Chapter 2: 恋人達](/novel/unnamed-memory-after-the-end/chapter-002)
 - [Chapter 3: 幕間:魔女の婚礼](/novel/unnamed-memory-after-the-end/chapter-003)
-

@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: "Web Novel Platform"
-  text: "Pengalaman Membaca Novel Digital"
+  name: 'Web Novel Platform'
+  text: 'Pengalaman Membaca Novel Digital'
   tagline: Platform membaca novel dengan fitur lengkap dan nyaman
   actions:
     - theme: brand

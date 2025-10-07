@@ -53,7 +53,9 @@ const fontScaleLabel = computed(() => {
     </div>
 
     <div class="reader-settings__group">
-      <label class="reader-settings__label" for="reader-font-scale"> {{ t('reader.fontSize') }} </label>
+      <label class="reader-settings__label" for="reader-font-scale">
+        {{ t('reader.fontSize') }}
+      </label>
       <input
         id="reader-font-scale"
         class="reader-settings__slider"
@@ -67,7 +69,9 @@ const fontScaleLabel = computed(() => {
     </div>
 
     <div class="reader-settings__group">
-      <label class="reader-settings__label" for="reader-font-family"> {{ t('reader.fontFamily') }} </label>
+      <label class="reader-settings__label" for="reader-font-family">
+        {{ t('reader.fontFamily') }}
+      </label>
       <select
         id="reader-font-family"
         class="reader-settings__select"
@@ -80,7 +84,9 @@ const fontScaleLabel = computed(() => {
     </div>
 
     <div class="reader-settings__group">
-      <label class="reader-settings__label" for="reader-line-height"> {{ t('reader.lineHeight') }} </label>
+      <label class="reader-settings__label" for="reader-line-height">
+        {{ t('reader.lineHeight') }}
+      </label>
       <select
         id="reader-line-height"
         class="reader-settings__select"
@@ -98,7 +104,9 @@ const fontScaleLabel = computed(() => {
     </div>
 
     <div class="reader-settings__group">
-      <label class="reader-settings__label" for="reader-width"> {{ t('reader.contentWidth') }} </label>
+      <label class="reader-settings__label" for="reader-width">
+        {{ t('reader.contentWidth') }}
+      </label>
       <select
         id="reader-width"
         class="reader-settings__select"

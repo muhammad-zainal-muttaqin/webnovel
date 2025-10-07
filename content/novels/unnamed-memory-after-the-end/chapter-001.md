@@ -1,12 +1,17 @@
 ---
+id: umae-chapter-001
+novel: unnamed-memory-after-the-end
+chapter: 1
 title: 本編
+prev: null
+next: ./chapter-002.md
+summary: 三百年もの永きにわたって、大陸で続いていた魔女の時代。強すぎる力を持つ五人の女を忌み、その恐怖を忘れることのないよう人々が囁ささやき始めた時代は、一人の魔女の結婚によって終わろうとしている。
+keywords:
+  - Unnamed Memory
+  - アフターストーリー
+  - ファンタジー
+releaseDate: '2022-01-02'
 layout: doc
-prev:
-  text: 'Novel List'
-  link: '/novels'
-next:
-  text: '恋人達'
-  link: '/novel/unnamed-memory-after-the-end/chapter-002'
 ---
 
 # Unnamed Memory -after the end- I

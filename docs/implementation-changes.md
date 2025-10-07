@@ -22,6 +22,7 @@
 ### 1. Gunakan Layout `doc` Built-in
 
 **Sebelum:**
+
 ```yaml
 ---
 layout: reader
@@ -33,6 +34,7 @@ next: ./chapter-002.md
 ```
 
 **Sesudah:**
+
 ```yaml
 ---
 title: Chapter Title
@@ -49,11 +51,13 @@ next:
 ### 2. Manfaat Approach Baru
 
 ✅ **Lebih Simple**
+
 - Pakai komponen VitePress yang sudah teruji
 - Tidak perlu maintain custom components
 - Kode lebih clean dan mudah dipahami
 
 ✅ **Fitur Built-in**
+
 - Prev/Next navigation otomatis
 - Sidebar otomatis (jika dikonfigurasi)
 - Outline/TOC otomatis dari headings
@@ -61,6 +65,7 @@ next:
 - Responsive design
 
 ✅ **Konsisten dengan VitePress**
+
 - Styling konsisten
 - Font system yang universal
 - Update VitePress langsung dapat fitur baru
@@ -74,14 +79,14 @@ export default defineConfig({
   themeConfig: {
     // Customize reading experience
     outline: [2, 3], // Show h2 and h3 in outline
-    
+
     // Localized navigation
     docFooter: {
       prev: 'Previous Chapter',
-      next: 'Next Chapter'
-    }
-  }
-})
+      next: 'Next Chapter',
+    },
+  },
+});
 ```
 
 ### 4. Custom Styling (Minimal)
@@ -103,7 +108,7 @@ Jika perlu custom styling, extend via `.vitepress/theme/custom.css`:
 ## Migration Checklist
 
 - [x] Update chapter-001.md to use `layout: doc`
-- [x] Update chapter-002.md to use `layout: doc`  
+- [x] Update chapter-002.md to use `layout: doc`
 - [x] Update chapter-003.md to use `layout: doc`
 - [x] Remove custom reader layout (optional, untuk backward compatibility)
 - [x] Update font stack ke system fonts
@@ -117,4 +122,3 @@ Jika perlu custom styling, extend via `.vitepress/theme/custom.css`:
 2. Hapus/archive custom reader components jika tidak diperlukan
 3. Update readme dengan approach baru
 4. Dokumentasikan best practices untuk add chapter baru
-

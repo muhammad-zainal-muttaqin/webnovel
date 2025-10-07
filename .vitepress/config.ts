@@ -8,7 +8,7 @@ export default defineConfig({
     'novels/:slug/:chapter': 'novel/:slug/:chapter',
   },
   lastUpdated: false,
-  
+
   locales: {
     root: {
       label: 'English',
@@ -20,9 +20,9 @@ export default defineConfig({
         ],
         docFooter: {
           prev: 'Previous',
-          next: 'Next'
-        }
-      }
+          next: 'Next',
+        },
+      },
     },
     id: {
       label: 'Indonesia',
@@ -35,22 +35,20 @@ export default defineConfig({
         ],
         docFooter: {
           prev: 'Sebelumnya',
-          next: 'Selanjutnya'
-        }
-      }
-    }
+          next: 'Selanjutnya',
+        },
+      },
+    },
   },
-  
+
   themeConfig: {
     outline: false,
     search: {
       provider: 'local',
     },
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com' }
-    ],
+    socialLinks: [{ icon: 'github', link: 'https://github.com' }],
   },
-  
+
   vite: {
     server: {
       port: 3000,
@@ -60,4 +58,3 @@ export default defineConfig({
   appearance: 'dark',
   cleanUrls: true,
 });
-

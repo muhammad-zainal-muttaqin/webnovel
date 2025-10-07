@@ -1,1 +1,1 @@
-export { useReaderPreferences } from '../composables/useReaderPreferences';
+export { useReaderPreferences } from '../composables/useReaderPreferences.js';

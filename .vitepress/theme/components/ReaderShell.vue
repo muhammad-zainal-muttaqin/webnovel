@@ -93,7 +93,9 @@ const toggleSettings = () => {
         <h1 class="reader-shell__chapter">{{ chapterTitle }}</h1>
       </div>
       <div class="reader-shell__actions">
-        <button type="button" class="reader-shell__action" @click="toggleSettings">{{ t('reader.settings') }}</button>
+        <button type="button" class="reader-shell__action" @click="toggleSettings">
+          {{ t('reader.settings') }}
+        </button>
         <SearchDialog />
       </div>
     </header>

@@ -2,8 +2,8 @@
 layout: home
 
 hero:
-  name: "Web Novel Platform"
-  text: "Digital Novel Reading Experience"
+  name: 'Web Novel Platform'
+  text: 'Digital Novel Reading Experience'
   tagline: Reading experience tailored for long-form fiction
   actions:
     - theme: brand

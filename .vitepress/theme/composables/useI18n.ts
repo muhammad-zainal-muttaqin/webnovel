@@ -34,7 +34,7 @@ export const translations = {
       noResults: 'No matching chapters. Try a different keyword.',
       readingMode: 'Reading Mode',
       chapterNavigation: 'Chapter Navigation',
-    }
+    },
   },
   id: {
     reader: {
@@ -68,32 +68,35 @@ export const translations = {
       noResults: 'Tidak ada chapter yang cocok. Coba kata kunci lain.',
       readingMode: 'Mode Baca',
       chapterNavigation: 'Navigasi Chapter',
-    }
-  }
+    },
+  },
 };
 
 export function useI18n() {
   const { lang } = useData();
-  
+
   const locale = computed(() => {
     const currentLang = lang.value;
     return currentLang === 'id' ? 'id' : 'en';
   });
-  
-  const t = (key: string) => {
+
+  const t = (key: string): string => {
     const keys = key.split('.');
-    let value: any = translations[locale.value];
-    
+    let value: unknown = translations[locale.value];
+
     for (const k of keys) {
-      value = value?.[k];
+      if (value && typeof value === 'object' && k in value) {
+        value = (value as Record<string, unknown>)[k];
+      } else {
+        return key;
+      }
     }
-    
-    return value || key;
+
+    return typeof value === 'string' ? value : key;
   };
-  
+
   return {
     t,
-    locale
+    locale,
   };
 }
-

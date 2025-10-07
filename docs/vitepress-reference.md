@@ -15,6 +15,7 @@ Layout files should be placed in `.vitepress/theme/layouts/`
 ## Default Theme Components
 
 VitePress provides these built-in layouts:
+
 - `doc` - Standard documentation layout with sidebar
 - `home` - Homepage with hero section
 - `page` - Simple page without sidebar
@@ -22,6 +23,7 @@ VitePress provides these built-in layouts:
 ## Frontmatter Options
 
 Common frontmatter fields:
+
 - `title` - Page title
 - `description` - Page description
 - `layout` - Layout to use
@@ -44,7 +46,7 @@ export default defineConfig({
       }
     },
     id: {
-      label: 'Indonesia', 
+      label: 'Indonesia',
       lang: 'id',
       link: '/id/',
       themeConfig: {
@@ -61,13 +63,13 @@ export default defineConfig({
 Extend default theme in `.vitepress/theme/index.ts`:
 
 ```ts
-import DefaultTheme from 'vitepress/theme'
-import './custom.css'
+import DefaultTheme from 'vitepress/theme';
+import './custom.css';
 
 export default {
   extends: DefaultTheme,
   // Custom enhancements
-}
+};
 ```
 
 ## Best Practices
@@ -83,6 +85,7 @@ export default {
 ### Navigation Between Pages
 
 Use relative links:
+
 ```md
 [Next Chapter](./chapter-002)
 [Previous Chapter](./chapter-001)
@@ -91,6 +94,7 @@ Use relative links:
 ### Custom Components
 
 Register in theme enhanceApp:
+
 ```ts
 enhanceApp({ app }) {
   app.component('MyComponent', MyComponent)
@@ -98,7 +102,7 @@ enhanceApp({ app }) {
 ```
 
 Use in markdown:
+
 ```md
 <MyComponent />
 ```
-
