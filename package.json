@@ -14,7 +14,10 @@
     "typecheck": "tsc --noEmit",
     "validate:content": "tsx scripts/validate-content.ts",
     "test": "npm run lint",
-    "check": "npm run lint && npm run typecheck && npm run validate:content"
+    "check": "npm run lint && npm run typecheck && npm run validate:content",
+    "generate:search": "tsx scripts/build-search-index.ts",
+    "docs:dev": "npm run generate:search && vitepress dev",
+    "docs:build": "npm run generate:search && vitepress build"
   },
   "keywords": [],
   "author": "",

@@ -1,5 +1,7 @@
 import DefaultTheme from 'vitepress/theme';
 import type { Theme } from 'vitepress';
+import { h } from 'vue';
+import { useData } from 'vitepress';
 
 import ReaderShell from './components/ReaderShell.vue';
 import ReaderSettings from './components/ReaderSettings.vue';
@@ -8,11 +10,25 @@ import TableOfContents from './components/TableOfContents.vue';
 import SearchDialog from './components/SearchDialog.vue';
 import SkeletonBlock from './components/SkeletonBlock.vue';
 import ReaderNote from './components/ReaderNote.vue';
+import ReaderLayout from './layouts/Reader.vue';
 
 import './styles/main.css';
 
+const WrappedLayout = {
+  setup() {
+    const { frontmatter } = useData();
+    return () => {
+      if (frontmatter.value.layout === 'reader') {
+        return h(ReaderLayout);
+      }
+      return h(DefaultTheme.Layout);
+    };
+  },
+};
+
 const theme: Theme = {
   extends: DefaultTheme,
+  Layout: WrappedLayout,
   enhanceApp({ app }) {
     app.component('ReaderShell', ReaderShell);
     app.component('ReaderSettings', ReaderSettings);

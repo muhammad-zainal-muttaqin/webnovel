@@ -12,7 +12,15 @@ const prettierRecommended = prettier.configs?.recommended ?? {};
 
 export default [
   {
-    ignores: ['dist/**', 'node_modules/**', '.vitepress/cache/**', '_*.json'],
+    ignores: [
+      'dist/**',
+      'node_modules/**',
+      '.vitepress/cache/**',
+      '.vitepress/dist/**',
+      '.vitepress/.temp/**',
+      'public/**',
+      '_*.json',
+    ],
   },
   {
     languageOptions: {

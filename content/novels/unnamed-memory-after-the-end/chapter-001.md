@@ -1,21 +1,23 @@
 ---
-id: 'umae-chapter-001'
-novel: 'unnamed-memory-after-the-end'
+id: umae-chapter-001
+novel: unnamed-memory-after-the-end
 chapter: 1
-title: '本編'
+title: 本編
 prev: null
-next: './chapter-002.md'
-summary: '三百年もの永きにわたって、大陸で続いていた魔女の時代。強すぎる力を持つ五人の女を忌み、その恐怖を忘れることのないよう人々が囁ささやき始めた時代は、一人の魔女の結婚によって終わろうとしている。'
+next: ./chapter-002.md
+summary: 三百年もの永きにわたって、大陸で続いていた魔女の時代。強すぎる力を持つ五人の女を忌み、その恐怖を忘れることのないよう人々が囁ささやき始めた時代は、一人の魔女の結婚によって終わろうとしている。
 keywords:
-  - 'Unnamed Memory'
-  - 'アフターストーリー'
-  - 'ファンタジー'
+  - Unnamed Memory
+  - アフターストーリー
+  - ファンタジー
 releaseDate: '2022-01-02'
+layout: reader
 ---
 
-<ReaderShell>
 # 本編
+
 ## Contents
+
 - １．この世界より密やかに始まりを告げよ
 - ２．焼きついた影
 - ３．狂い刃
@@ -10061,6 +10063,3 @@ releaseDate: '2022-01-02'
 　人ではなく異質の物語。その全貌はどこの国の記録にも残されない。
 
 　このお話は彼らの幸福の、ほんのわずかな記憶の一部だ。
-
-<ChapterNav />
-</ReaderShell>

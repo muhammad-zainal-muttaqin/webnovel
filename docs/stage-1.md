@@ -11,8 +11,8 @@ Dokumen ini menjadi referensi kerja Tahap 1: menyiapkan pengalaman membaca stati
 ## Struktur Konten
 
 - Folder utama: `content/novels/<slug>/chapter-XXX.md`.
-- Metadata global novel: `novels.json` di root (judul, author, cover, status, tags, deskripsi singkat).
-- Tambahkan skrip validasi (nantinya di `scripts/validate-content.ts`) untuk mengecek:
+- Metadata global novel: `novels.json` (judul, author, cover, status, tags, deskripsi singkat).
+- Skrip validasi (`scripts/validate-content.ts`) mengecek:
   - Frontmatter wajib (id, novel, chapter, title, prev, next, summary, keywords, releaseDate).
   - Konsistensi penomoran chapter.
   - Tautan prev/next valid.
@@ -27,48 +27,48 @@ Semua komponen disimpan di `.vitepress/theme`.
 | `ReaderShell.vue`     | Layout halaman baca, header, konten, footer             | Menggunakan slot untuk isi chapter                    |
 | `ReaderSettings.vue`  | Panel kontrol tampilan (font, size, spacing, dark mode) | Preferensi disimpan via helper `useReaderPreferences` |
 | `ChapterNav.vue`      | Tombol prev/next, progress bar, info chapter            | Ambil metadata prev/next dari frontmatter             |
-| `TableOfContents.vue` | Daftar isi novel                                        | Diisi dari `novels.json` dan metadata chapter         |
-| `SearchDialog.vue`    | Pencarian cepat                                         | Mengonsumsi indeks statis (`public/index.json`)       |
+| `TableOfContents.vue` | Daftar isi novel                                        | Mengonsumsi data dari `novels.json` + metadata bab    |
+| `SearchDialog.vue`    | Pencarian cepat                                         | Mengonsumsi indeks statis `public/index.json`         |
 | `SkeletonBlock.vue`   | Loading state generik                                   | Digunakan saat data belum tersedia                    |
-| `ReaderNote.vue`      | Komponen untuk highlight atau blockquote khusus         | Dipanggil dalam Markdown                              |
+| `ReaderNote.vue`      | Komponen highlight/blockquote                           | Dipanggil dalam Markdown                              |
 
 ### Composable dan Store
 
-- `useReaderPreferences` - membaca dan menyimpan preferensi ke `localStorage` dengan fallback default.
-- `useChapterProgress` - menghitung posisi progress berdasarkan panjang konten (opsional Tahap 1).
-- `store/index.ts` - reactive store ringan untuk menyimpan preferensi dan status UI global.
+- `useReaderPreferences` � membaca & menyimpan preferensi ke `localStorage` dengan fallback default.
+- `store/index.ts` � titik ekspor composable untuk preferensi pembaca.
 
 ### Konfigurasi VitePress
 
 - `vitepress.config.ts`
   - `srcDir: "content"`.
-  - `rewrites` untuk memetakan `novels/<slug>/<chapter>` ke URL `/novel/<slug>/<chapter>`.
-  - `themeConfig` kustom untuk menonaktifkan sidebar default dan menghubungkan komponen reader.
-- Plugin atau hook build:
-  - Generator indeks pencarian - tulis file `public/index.json`.
-  - Validator frontmatter (menggunakan skrip Node).
+  - `rewrites` memetakan `novels/<slug>/<chapter>` menjadi `/novel/<slug>/<chapter>`.
+  - `themeConfig` menonaktifkan outline default dan mendaftarkan komponen reader.
+- Skrip pendukung:
+  - `scripts/build-search-index.ts` menghasilkan indeks pencarian (`public/index.json`).
+  - `scripts/validate-content.ts` memastikan frontmatter dan relasi antar chapter valid.
 
 ## Build dan Deploy
 
-- Tambahkan workflow GitHub Actions (`.github/workflows/deploy.yml`):
-  1. Checkout dan install dependency (`pnpm install --frozen-lockfile`).
-  2. Jalankan `pnpm lint`, `pnpm typecheck`, `pnpm test` (opsional), `pnpm build`.
-  3. Upload artefak dan deploy ke Cloudflare Pages, Vercel, atau GitHub Pages.
-- Konfigurasikan environment untuk memicu workflow pada push ke `main` atau saat ada PR untuk review.
+- Workflow GitHub Actions (`.github/workflows/check.yml`):
+  1. Checkout dan install dependency (`npm install`).
+  2. Jalankan `npm run check` (lint + typecheck + validator konten).
+  3. (Opsional) `npm run docs:build` sebelum deploy ke Cloudflare Pages/Vercel/GitHub Pages.
+- Lokal:
+  - `npm run docs:dev` menjalankan VitePress dev server setelah regenerasi indeks.
+  - `npm run docs:build` membangun output statis (memanggil `npm run generate:search`).
 
 ## Quality Gate Manual
 
-- Lint dan typecheck harus lolos sebelum merge.
-- Lakukan audit Lighthouse manual (desktop dan mobile) lalu catat skor di `docs/audit.md`.
+- `npm run check` harus lolos sebelum merge.
+- Audit Lighthouse manual (desktop & mobile) dan catat di `docs/audit.md`.
 - Baca sampel chapter di versi deployed untuk verifikasi:
   - Navigasi prev/next berfungsi.
-  - Setting light/dark tersimpan dan diterapkan ulang saat reload.
-  - Pencarian menampilkan hasil yang benar.
+  - Pengaturan light/dark tersimpan dan diterapkan ulang saat reload.
+  - Pencarian menampilkan hasil dari `public/index.json`.
 
 ## Rencana Iterasi Berikutnya
 
-- Siapkan kerangka `scripts/validate-content.ts`.
-- Buat template generator untuk chapter baru (`pnpm run scaffold:chapter`).
+- Otomatiskan regenerasi indeks pencarian (`npm run generate:search`) setiap konten berubah.
 - Dokumentasikan pola commit konten di `docs/content-guidelines.md` (opsional).
 
 Playbook ini akan diupdate setiap kali ada tambahan tooling atau prosedur baru pada Tahap 1.

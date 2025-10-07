@@ -93,7 +93,11 @@ Dokumen ini akan diperbarui seiring bertambahnya kebutuhan dan saat kita memasuk
 
 - `npm run lint` - menjalankan ESLint untuk `.ts`, `.js`, dan `.vue`.
 - `npm run typecheck` - pemeriksaan TypeScript menggunakan `tsc --noEmit`.
-- `npm run validate:content` - validasi struktur Markdown di `content/novels`.
-- `npm run lint:content` - alias untuk menjalankan validator konten.
-- `npm run format` / `npm run format:check` - format otomatis atau cek format via Prettier.
-- `npm run check` - lint, typecheck, dan validasi konten dijalankan berurutan.
+- pm run validate:content - validasi struktur Markdown di content/novels.
+- pm run lint:content - alias untuk menjalankan validator konten.
+- pm run generate:search - menghasilkan indeks pencarian statis di public/index.json.
+- pm run docs:dev - menjalankan VitePress development server setelah regenerasi indeks.
+- pm run docs:build - membangun output statis VitePress (disertai regenerasi indeks).
+- pm run format /
+  pm run format:check - format otomatis atau cek format via Prettier.
+- pm run check - lint, typecheck, dan validasi konten dijalankan berurutan.

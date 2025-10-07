@@ -1,19 +1,22 @@
 ---
-id: 'umae-chapter-002'
-novel: 'unnamed-memory-after-the-end'
+id: umae-chapter-002
+novel: unnamed-memory-after-the-end
 chapter: 2
-title: 'あとがき'
-prev: './chapter-001.md'
-next: './chapter-003.md'
-summary: 'お世話になっております、古ふる宮みや九く時じです。この度は『Unnamed Memory -after the end- Ⅰ』をお手に取ってくださり、ありがとうございます！　この作品は同電撃の新文芸レーベルより刊行の『Unnamed Memory』の続編にあたります。'
+title: あとがき
+prev: ./chapter-001.md
+next: ./chapter-003.md
+summary: >-
+  お世話になっております、古ふる宮みや九く時じです。この度は『Unnamed Memory -after the end- Ⅰ』をお手に取ってくださり、ありがとうございます！　この作品は同電撃の新文芸レーベルより刊行の『Unnamed
+  Memory』の続編にあたります。
 keywords:
-  - 'Unnamed Memory'
-  - '作者ノート'
+  - Unnamed Memory
+  - 作者ノート
 releaseDate: '2022-01-02'
+layout: reader
 ---
 
-<ReaderShell>
 # あとがき
+
 　お世話になっております、古ふる宮みや九く時じです。
 
 　この度は『Unnamed Memory -after the end- Ⅰ』をお手に取ってくださり、ありがとうございます！　この作品は同電撃の新文芸レーベルより刊行の『Unnamed Memory』の続編にあたります。前作を読んでいなくても今作から楽しめる！　というタイプではなく、前作で未解決の問題をがつがつ拾っていく話になりますので、どうぞ前作がまだの方は先にそちらをお楽しみください。
@@ -35,6 +38,3 @@ releaseDate: '2022-01-02'
 　ではまた、どこか遠い時間の、誰かの物語にて！　ありがとうございました！
 
 古宮　九時
-
-<ChapterNav />
-</ReaderShell>
