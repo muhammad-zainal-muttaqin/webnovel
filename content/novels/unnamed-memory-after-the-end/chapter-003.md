@@ -10,13 +10,7 @@ keywords:
   - Unnamed Memory
   - 番外編
 releaseDate: '2022-01-02'
-layout: doc
----
-
-# Unnamed Memory -after the end- I
-
-**Chapter 3: 章外：蛇の残像**
-
+layout: reader
 ---
 
 # 章外：蛇の残像

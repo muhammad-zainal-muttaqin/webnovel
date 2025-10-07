@@ -11,13 +11,7 @@ keywords:
   - アフターストーリー
   - ファンタジー
 releaseDate: '2022-01-02'
-layout: doc
----
-
-# Unnamed Memory -after the end- I
-
-**Chapter 1: 本編**
-
+layout: reader
 ---
 
 # 本編
