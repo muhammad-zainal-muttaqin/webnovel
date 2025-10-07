@@ -92,16 +92,81 @@
 }
 
 /**
- * Reading Experience
+ * Reading Experience - Reader Preferences
+ * -------------------------------------------------------------------------- */
+
+/* Apply saved reading preferences */
+:root {
+  --reader-font-size: 1rem;
+  --reader-line-height: 1.75;
+  --reader-content-max: 800px;
+  --reader-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+}
+
+/* Font Family Preferences */
+.reader-pref-serif {
+  --reader-font-family: Georgia, Cambria, 'Times New Roman', Times, serif;
+}
+
+.reader-pref-sans {
+  --reader-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+}
+
+/* Font Size Preferences */
+.reader-pref-size-sm {
+  --reader-font-size: 0.875rem;
+}
+.reader-pref-size-base {
+  --reader-font-size: 1rem;
+}
+.reader-pref-size-lg {
+  --reader-font-size: 1.125rem;
+}
+.reader-pref-size-xl {
+  --reader-font-size: 1.25rem;
+}
+.reader-pref-size-2xl {
+  --reader-font-size: 1.5rem;
+}
+
+/* Line Height Preferences */
+.reader-pref-line-compact {
+  --reader-line-height: 1.5;
+}
+.reader-pref-line-normal {
+  --reader-line-height: 1.75;
+}
+.reader-pref-line-relaxed {
+  --reader-line-height: 2;
+}
+
+/* Content Width Preferences */
+.reader-pref-width-narrow {
+  --reader-content-max: 640px;
+}
+.reader-pref-width-medium {
+  --reader-content-max: 800px;
+}
+.reader-pref-width-wide {
+  --reader-content-max: 1024px;
+}
+
+/**
+ * Reading Experience - VitePress Doc Layout
  * -------------------------------------------------------------------------- */
 
 .vp-doc {
-  /* Better line height for Japanese text */
-  line-height: 1.8;
+  font-family: var(--reader-font-family);
+  font-size: var(--reader-font-size);
+  line-height: var(--reader-line-height);
+  max-width: var(--reader-content-max);
 }
 
 .vp-doc p {
-  margin: 1.25rem 0;
+  margin: 1.25em 0;
+  line-height: inherit;
 }
 
 .vp-doc h1,
@@ -109,6 +174,7 @@
 .vp-doc h3 {
   margin-top: 2rem;
   margin-bottom: 1rem;
+  line-height: 1.4;
 }
 
 /* Better spacing for lists */

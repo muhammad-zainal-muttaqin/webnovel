@@ -11,7 +11,9 @@ keywords:
   - アフターストーリー
   - ファンタジー
 releaseDate: '2022-01-02'
-layout: reader
+layout: doc
+aside: false
+outline: false
 ---
 
 # 本編

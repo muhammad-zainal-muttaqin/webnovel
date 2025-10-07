@@ -10,7 +10,9 @@ keywords:
   - Unnamed Memory
   - 作者ノート
 releaseDate: '2022-01-02'
-layout: reader
+layout: doc
+aside: false
+outline: false
 ---
 
 # あとがき
